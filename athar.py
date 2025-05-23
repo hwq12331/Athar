@@ -8,6 +8,9 @@ import shutil
 import threading
 import time
 from web3 import Web3
+from dotenv import load_dotenv
+
+load_dotenv()  # Load variables from .env
 
 # -------------------- CONFIG --------------------
 INFURA_URL = os.getenv("INFURA_URL")

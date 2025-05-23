@@ -1,0 +1,18 @@
+# Hide environment and sensitive files
+.env
+.streamlit/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node modules
+node_modules/
+package-lock.json
+
+# VS Code settings (optional)
+.vscode/
+
+# OS junk files
+.DS_Store
+Thumbs.db
