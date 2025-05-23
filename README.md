@@ -18,4 +18,3 @@ This version simulates IPFS without real blockchain upload.
 - SHA-256 file hashing
 - Simulated IPFS CID
 - UTC timestamp logging
-- Saves data to archive/records.json
