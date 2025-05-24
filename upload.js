@@ -2,20 +2,25 @@ import * as Client from '@web3-storage/w3up-client'
 import { filesFromPaths } from 'files-from-path'
 import path from 'path'
 
-const client = await Client.create()
+async function main() {
+  const client = await Client.create()
 
-// use saved space
-const space = await client.currentSpace()
-if (!space) {
-  console.error("❌ No space found. Run login flow first.")
-  process.exit(1)
+  const space = await client.currentSpace()
+  if (!space) {
+    console.error("❌ No space found. Run login flow first.")
+    process.exit(1)
+  }
+
+  const filePath = process.argv[2]
+  const files = await filesFromPaths([filePath])
+  const root = await client.uploadDirectory(files)
+
+  // ✅ Output for Python
+  console.log("IPFS URL")
+  console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
+
+  // flush to stdout for Streamlit Cloud
+  process.stdout.write('', () => {});
 }
 
-const filePath = process.argv[2]
-const files = await filesFromPaths([filePath])
-const root = await client.uploadDirectory(files)
-
-// ✅ Correct order: label first, then URL
-console.log("IPFS URL")
-console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
-process.stdout.write('', () => {}); // flush
+main()
