@@ -114,17 +114,11 @@ def create_torrent(file_path, log_callback):
             nonlocal magnet_uri, capture_next
             for line in proc.stdout:
                 line = line.strip()
-                print("🪵 JS OUTPUT:", line)
-
                 if capture_next:
                     magnet_uri = line
                     capture_next = False
-
-                if "MAGNET URI" in line:
+                elif "MAGNET URI" in line:
                     capture_next = True
-
-                elif "SEED_STATUS:" in line:
-                    log_callback(line.replace("SEED_STATUS:", "").strip())
 
         thread = threading.Thread(target=stream_logs)
         thread.start()
@@ -133,6 +127,7 @@ def create_torrent(file_path, log_callback):
         return magnet_uri or "⚠️ Magnet URI not found."
     except Exception as e:
         return f"🚫 Error: {str(e)}"
+
 
 
 def upload_to_ipfs_js(file_path):

@@ -21,7 +21,6 @@ client.seed(filePath, {
     "wss://tracker.webtorrent.io"
   ]
 }, torrent => {
-  // ✅ Python will look for this
   console.log("MAGNET URI")
   console.log(torrent.magnetURI)
 })
