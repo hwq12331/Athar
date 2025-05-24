@@ -17,3 +17,7 @@ const root = await client.uploadDirectory(files)
 
 // ✅ Print the full URL for Python
 console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
+
+console.log("IPFS URL")
+console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
+

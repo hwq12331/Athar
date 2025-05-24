@@ -138,10 +138,11 @@ def create_torrent(file_path, log_callback):
 def upload_to_ipfs_js(file_path):
     try:
         result = subprocess.run([NODE_PATH, UPLOAD_SCRIPT, file_path], capture_output=True, text=True)
-        for line in result.stdout.splitlines():
-            if line.strip().startswith("https://") and ".ipfs.w3s.link" in line:
-                return line.strip()
-        return "⚠️ IPFS URL not found."
+        lines = result.stdout.splitlines()
+        for i, line in enumerate(lines):
+            if "IPFS URL" in line and i + 1 < len(lines):
+                return lines[i + 1].strip()
+
     except Exception as e:
         return f"🚫 IPFS Upload error: {e}"
 
