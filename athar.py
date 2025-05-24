@@ -142,9 +142,10 @@ def upload_to_ipfs_js(file_path):
         for i, line in enumerate(lines):
             if "IPFS URL" in line and i + 1 < len(lines):
                 return lines[i + 1].strip()
-
+        return "⚠️ IPFS URL not found."
     except Exception as e:
         return f"🚫 IPFS Upload error: {e}"
+
 
 def register_on_chain(file_hash, file_name):
     try:
