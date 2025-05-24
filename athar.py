@@ -20,6 +20,9 @@ CONTRACT_ADDRESS = os.getenv("CONTRACT_ADDRESS")
 MAGNET_SCRIPT = os.path.abspath("magnet.mjs")
 UPLOAD_SCRIPT = os.path.abspath("upload.js")
 
+st.write("INFURA:", INFURA_URL)  # 🔍 Just for testing — remove later!
+
+
 NODE_PATH = shutil.which("node")
 if NODE_PATH is None:
     st.sidebar.warning("⚠️ Node.js not found. Torrent generation will not work.")
