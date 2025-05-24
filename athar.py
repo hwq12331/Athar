@@ -147,6 +147,7 @@ def upload_to_ipfs_js(file_path):
         return f"🚫 IPFS Upload error: {e}"
 
 
+
 def register_on_chain(file_hash, file_name):
     try:
         nonce = w3.eth.get_transaction_count(WALLET_ADDRESS)

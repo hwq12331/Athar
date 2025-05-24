@@ -15,9 +15,6 @@ const filePath = process.argv[2]
 const files = await filesFromPaths([filePath])
 const root = await client.uploadDirectory(files)
 
-// ✅ Print the full URL for Python
-console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
-
+// ✅ Correct order: label first, then URL
 console.log("IPFS URL")
 console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
-
