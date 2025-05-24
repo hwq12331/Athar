@@ -114,6 +114,7 @@ def create_torrent(file_path, log_callback):
             nonlocal magnet_uri, capture_next
             for line in proc.stdout:
                 line = line.strip()
+                st.text("🔎 RAW LOG: " + line)
                 if capture_next:
                     magnet_uri = line
                     capture_next = False
@@ -134,6 +135,8 @@ def upload_to_ipfs_js(file_path):
     try:
         result = subprocess.run([NODE_PATH, UPLOAD_SCRIPT, file_path], capture_output=True, text=True)
         lines = result.stdout.splitlines()
+        st.text("STDOUT:\n" + result.stdout)
+        st.text("STDERR:\n" + result.stderr)
         for i, line in enumerate(lines):
             if "IPFS URL" in line and i + 1 < len(lines):
                 return lines[i + 1].strip()

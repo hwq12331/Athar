@@ -23,4 +23,5 @@ client.seed(filePath, {
 }, torrent => {
   console.log("MAGNET URI")
   console.log(torrent.magnetURI)
+  process.stdout.write('', () => {}); // flush
 })

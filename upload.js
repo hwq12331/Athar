@@ -18,3 +18,4 @@ const root = await client.uploadDirectory(files)
 // ✅ Correct order: label first, then URL
 console.log("IPFS URL")
 console.log(`https://${root.toString()}.ipfs.w3s.link/${path.basename(filePath)}`)
+process.stdout.write('', () => {}); // flush
